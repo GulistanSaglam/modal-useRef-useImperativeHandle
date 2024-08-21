@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import { useRef } from 'react';
 import './App.css';
+import Modal from './Modal';
 
 function App() {
+  const dialog = useRef();
+
+  const handleModal = () => {
+    dialog.current.open();
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Modal ref={dialog} />
+      <div className="App">
+        <h3>PLEASE CLICK THE BUTTON TO SEE THE MODAL</h3>
+        <button onClick={handleModal}>OPEN THE MODAL</button>
+      </div>
+    </>
   );
 }
 
